@@ -1,0 +1,24 @@
+create database lab5
+create table customers(
+	customer_id integer,
+	cust_name varchar(100),
+	city varchar(100),
+	grade integer,
+	salesman_id integer
+);
+select * from customers where grade > 100
+select * from customers where grade > 100 and city = 'New York'
+select * from customers where grade > 100 or city = 'New York'
+select * from customers where city = 'Paris' or city = 'Rome'
+select * from customers where cust_name = 'B%'
+create table orders(
+	order_id serial primary key,
+	customer_id integer references customers(customer_id),
+	description varchar(100),
+	purch_amt integer
+);
+select * from orders where customer_id in(select customer_id from customers where city = 'New York')
+select * from customers where customer_id in(select customer_id from orders where purch_amt > 10)
+select sum(purch_amt) from orders
+select * from customers where cust_name != null
+select max(purch_amt) from orders
