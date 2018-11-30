@@ -1,0 +1,39 @@
+CREATE FUNCTION sum_of_two_numbers(m integer, n integer) 
+RETURNS integer AS $$
+        BEGIN
+                RETURN m + n;
+        END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE FUNCTION FUN_TO_TEST () RETURNS double precision 
+AS $TEST$ 
+BEGIN 
+   RETURN 4.295806896E-29; 
+END;    
+$TEST$  LANGUAGE PLPGSQL
+
+
+CREATE FUNCTION FUN_TO_TEST () 
+RETURNS double precision AS ' 
+BEGIN 
+RETURN 4.295806896E-29; 
+END;    
+'  
+LANGUAGE PLPGSQL
+
+
+CREATE FUNCTION FUN_TO_TEST(dt DATE, ing INTEGER) 
+RETURNS DATE AS $test$  
+DECLARE ss     ALIAS FOR $1;  
+        ff     ALIAS FOR $2; 
+BEGIN  
+   RETURN ss + ff * INTERVAL '2 DAY';  
+END;  
+$test$  
+LANGUAGE PLPGSQL
+
+
+DECLARE
+roll_no student.roll_no%TYPE
+
